@@ -1,0 +1,26 @@
+{
+	"name": "ShowHide",
+	"version": "1.0.15",
+	"ignore": [
+		"package.json",
+		"static/js/externs.yaml",
+		"static/js/build.yaml",
+		"qunit",
+		".gitignore",
+		".jshintrc",
+		"autoloader.php",
+		"composer.json",
+		"composer.lock",
+		"gslint.conf",
+		"gulpfile.js",
+		"index.php",
+		"quality.bat",
+		"README.md"
+	],
+	"dependencies": {
+		"jquery": "3"
+	},
+	"devDependencies": {
+
+	}
+}

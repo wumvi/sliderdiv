@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dd</title>
+
+    <script src="/res/bower_package/jquery/dist/jquery.min.js"></script>
+
+    <style>
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .cd-image-container {
+            position: relative;
+            width: 90%;
+            max-width: 777px;
+            margin: 80px auto;
+            line-height: 0;
+            border: 2px solid #2b2a38;
+        }
+
+        .cd-resize-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            overflow: hidden;
+            /* Force Hardware Acceleration in WebKit */
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+
+        .is-visible .cd-resize-img {
+            width: 50%;
+            /* bounce in animation of the modified image */
+            animation: cd-bounce-in 0.7s;
+        }
+
+        @keyframes cd-bounce-in {
+            0% {
+                width: 0;
+            }
+            60% {
+                width: 55%;
+            }
+            100% {
+                width: 50%;
+            }
+        }
+
+        .cd-handle {
+            position: absolute;
+            height: 44px;
+            width: 44px;
+            left: 50%;
+            top: 50%;
+            margin-left: -22px;
+            margin-top: -22px;
+            border-radius: 50%;
+            background: #445b7c url(/res/img/cd-arrows.svg) no-repeat center center;
+            cursor: move;
+            box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            opacity: 0;
+            -webkit-transform: translate3d(0, 0, 0) scale(0);
+            -moz-transform: translate3d(0, 0, 0) scale(0);
+            -ms-transform: translate3d(0, 0, 0) scale(0);
+            -o-transform: translate3d(0, 0, 0) scale(0);
+            transform: translate3d(0, 0, 0) scale(0);
+        }
+
+        .is-visible .cd-handle {
+            opacity: 1;
+            -webkit-transform: translate3d(0, 0, 0) scale(1);
+            -moz-transform: translate3d(0, 0, 0) scale(1);
+            -ms-transform: translate3d(0, 0, 0) scale(1);
+            -o-transform: translate3d(0, 0, 0) scale(1);
+            transform: translate3d(0, 0, 0) scale(1);
+            -webkit-transition: -webkit-transform 0.3s 0.7s, opacity 0s 0.7s;
+            -moz-transition: -moz-transform 0.3s 0.7s, opacity 0s 0.7s;
+            transition: transform 0.3s 0.7s, opacity 0s 0.7s;
+        }
+
+        .cd-handle:hover {
+            background-color: #5c7ba7;
+        }
+
+        .cd-image {
+            -webkit-user-select: none; /* Chrome all / Safari all */
+            -moz-user-select: none; /* Firefox all */
+            -ms-user-select: none; /* IE 10+ */
+            user-select: none; /* Likely future */
+        }
+
+        /*.rengen-wrap {*/
+            /*background: url(/res/img/border.png);*/
+            /*width: 952px;*/
+            /*height: 455px;*/
+            /*left: -94px;*/
+            /*top: -56px;*/
+            /*position: absolute;*/
+        /*}*/
+    </style>
+
+
+</head>
+<body>
+
+
+<figure class="cd-image-container is-visible" id="slider">
+    <img src="/res/img/1.jpg" class="cd-image cd-image__js">
+
+    <div class="cd-resize-img cd-resize-img__js">
+        <img src="/res/img/2.jpg" class="cd-image">
+    </div>
+
+    <span class="cd-handle cd-handle__js"></span>
+    <!--<div class="rengen-wrap"></div>-->
+</figure>
+
+
+<script src="/res/js/SlideDiver.js"></script>
+<script>
+    var slider = new Wumvi.SlideDiver(jQuery('#slider'));
+</script>
+</body>
+</html>
